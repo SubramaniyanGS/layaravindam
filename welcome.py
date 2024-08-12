@@ -1,4 +1,5 @@
-from flask import Flask, redirect, request, render_template, Markup,send_file,url_for
+from flask import Flask, redirect, request, render_template, send_file, url_for
+from markupsafe import Markup
 from math import prod,floor
 
 def gcd(a,b):

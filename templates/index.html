@@ -1,35 +1,63 @@
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
+<head>
     <meta charset="utf-8">
     <title>Layaravindam</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  </head>
-  <body align="center">
     <style>
+        html, body {
+            background-color: #252323;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
 
-    html, body {
-    background-color: #252323;
-    color: #fff;
-    }
+        iframe {
+            border: none;
+        }
 
+        /* Adjust the layout to center the content */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            width: 100%;
+        }
+
+        iframe[name="frame1"] {
+            height: 10%;
+            width: 100%;
+        }
+
+        iframe[name="frame2"] {
+            height: 90%;
+            width: 100%;
+        }
     </style>
-
-      <iframe src="{{ url_for('nav') }}" name="frame1" height='10%' width='100%' frameborder='no'></iframe>
-      <iframe src="{{ url_for('home') }}" name="frame2" height='90%' width='100%' frameborder='no' ></iframe>
+</head>
+<body>
+    <div class="container">
+        <iframe src="{{ url_for('nav') }}" name="frame1"></iframe>
+        <iframe src="{{ url_for('home') }}" name="frame2"></iframe>
+    </div>
 
     <script type="text/javascript">
-    $(document).on('keypress', 'input,select', function (e) {
-        if (e.which == 13) {
-            var $next = $('[tabIndex=' + (+this.tabIndex + 1) + ']');
-            console.log($next.length);
-            if (!$next.length) {
-           $next = $('[tabIndex=1]');        }
-            $next.focus() .click();
-        }
-    });
-
+        $(document).on('keypress', 'input,select', function (e) {
+            if (e.which == 13) {
+                var $next = $('[tabIndex=' + (+this.tabIndex + 1) + ']');
+                console.log($next.length);
+                if (!$next.length) {
+                    $next = $('[tabIndex=1]');
+                }
+                $next.focus().click();
+            }
+        });
     </script>
-  </body>
+</body>
 </html>

@@ -1,74 +1,89 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
+<head>
     <meta charset="utf-8">
     <title>Main page</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
     <style>
-    body {
-        padding: 40px 100px;
-        background-color: #252323;
-        font-size: 28px;
-    }
-    input[type="number"]{
-      font-size: inherit;
-    }
-    label{
-      color:#fff
-    }
-    .btn-success{
-      padding: 18px 45px;
-      font-size: 20px;
-    }
-    .btn-danger{
-      padding: 18px 45px;
-      font-size: 20px;
-    }
-    form {
-        max-width: 400px;
-        margin: 0 auto;
-    }
+        body {
+            padding: 40px 100px;
+            background-color: #252323;
+            color: #fff;
+            font-size: 28px;
+        }
 
+        input[type="number"] {
+            font-size: inherit;
+            background-color: #444;
+            color: #fff;
+            border: 1px solid #555;
+        }
+
+        label {
+            color: #fff;
+            font-size: 18px;
+        }
+
+        .btn-success, .btn-danger {
+            padding: 18px 45px;
+            font-size: 20px;
+            margin-right: 10px;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        select {
+            background-color: #444;
+            color: #fff;
+            border: 1px solid #555;
+            padding: 5px;
+            font-size: 18px;
+        }
     </style>
+</head>
+<body>
     <div class="container">
-      <form method="POST" action="misram/patterns">
-        <div class="form-group">
-          <label for="num">Tala avrutha kriyas:</label>
-          <input type="number" name="num1" step="0.01" class="form-control" id="num" required tabIndex="1" autofocus>
-        </div>
-        <div class="form-group">
-          <label for="num">Edupu(Jaga) aksharas:</label>
-          <input type="number" name="num2" step="0.01" class="form-control" id="usr" required tabIndex="2">
-        </div>
-        <div class="form-group">
-          <label for="units">Enter Unit:</label><br>
-          <select id="units" name="units" style="color: #252325">
-            <option value="Aksharas" selected>Aksharas</option>
-            <option value="Kriyas">Kriyas</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <button class="btn btn-success" tabIndex="5"> Submit</button>
-          <a href="{{ url_for('default_htm') }}" class="btn btn-danger" tabIndex="5"> Back </a>
-        </div>
-      </form>
+        <form method="POST" action="misram/patterns">
+            <div class="form-group">
+                <label for="num">Tala avrutha kriyas:</label>
+                <input type="number" name="num1" step="0.01" class="form-control" id="num" required tabIndex="1" autofocus>
+            </div>
+            <div class="form-group">
+                <label for="num">Edupu(Jaga) aksharas:</label>
+                <input type="number" name="num2" step="0.01" class="form-control" id="usr" required tabIndex="2">
+            </div>
+            <div class="form-group">
+                <label for="units">Enter Unit:</label><br>
+                <select id="units" name="units" class="form-control" tabIndex="3">
+                    <option value="Aksharas" selected>Aksharas</option>
+                    <option value="Kriyas">Kriyas</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-success" tabIndex="4">Submit</button>
+                <a href="{{ url_for('default_htm') }}" class="btn btn-danger" tabIndex="5">Back</a>
+            </div>
+        </form>
+    </div>
 
     <script type="text/javascript">
-    $(document).on('keypress', 'input,select', function (e) {
-        if (e.which == 13) {
-            var $next = $('[tabIndex=' + (+this.tabIndex + 1) + ']');
-            console.log($next.length);
-            if (!$next.length) {
-           $next = $('[tabIndex=1]');        }
-            $next.focus() .click();
-        }
-    });
+        $(document).on('keypress', 'input,select', function (e) {
+            if (e.which == 13) {
+                var $next = $('[tabIndex=' + (+this.tabIndex + 1) + ']');
+                if (!$next.length) {
+                    $next = $('[tabIndex=1]');
+                }
+                $next.focus().click();
+            }
+        });
     </script>
-    </div>
-  </body>
+</body>
 </html>
